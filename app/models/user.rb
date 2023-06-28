@@ -13,6 +13,7 @@ class User < ApplicationRecord
   # has_many :friends, -> {  where('status = ?  ', 'accepted') }, through: :requested, source: 'requested'
 
   has_many :posts
+  has_many :likes, through: :posts
 
   def friends
     requested_friend_ids = requested_friend_requests.friends.pluck(:requested_id)
