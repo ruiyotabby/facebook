@@ -9,3 +9,6 @@
 User.create(name: 'user1', email: 'user1@mail', password: '123456')
 User.create(name: 'user2', email: 'user2@mail', password: '123456')
 User.create(name: 'user3', email: 'user3@mail', password: '123456')
+
+User.first.posts.create(body: 'NOthing on my mind')
+User.second.posts.create(body: 'Fuck Tech')

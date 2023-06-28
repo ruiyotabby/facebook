@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :requested_friend_requests, class_name: "FriendRequest", foreign_key: "requester_id", inverse_of: 'requester'
   # has_many :friends, -> {  where('status = ?  ', 'accepted') }, through: :requested, source: 'requested'
 
+  has_many :posts
+
   def friends
     requested_friend_ids = requested_friend_requests.friends.pluck(:requested_id)
     received_friend_ids = received_friend_requests.friends.pluck(:requester_id)
