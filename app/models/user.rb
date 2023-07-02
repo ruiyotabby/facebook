@@ -14,6 +14,7 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :likes, through: :posts
+  has_many :comments, through: :posts
 
   def friends
     requested_friend_ids = requested_friend_requests.friends.pluck(:requested_id)
