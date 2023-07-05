@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  include Gravtastic
+  gravtastic
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -15,6 +18,8 @@ class User < ApplicationRecord
   has_many :posts
   has_many :likes, through: :posts
   has_many :comments, through: :posts
+
+  has_one_attached :avatar
 
   def friends
     requested_friend_ids = requested_friend_requests.friends.pluck(:requested_id)

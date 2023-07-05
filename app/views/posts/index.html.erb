@@ -1,0 +1,26 @@
+<div data-controller='tabs'>
+  <header class='post-header'>
+    <h1><%= link_to "demeter", root_path %></h1>
+    <div class='tab'>
+      <button class="tab-btn active" data-action='tabs#change' data-tabs-target='tab'>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>home</title><path d="M12 5.69L17 10.19V18H15V12H9V18H7V10.19L12 5.69M12 3L2 12H5V20H11V14H13V20H19V12H22" /></svg>
+      </button>
+      <button class="tab-btn" data-action='tabs#change' data-tabs-target='tab'>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>notifications</title><path d="M10 21H14C14 22.1 13.1 23 12 23S10 22.1 10 21M21 19V20H3V19L5 17V11C5 7.9 7 5.2 10 4.3V4C10 2.9 10.9 2 12 2S14 2.9 14 4V4.3C17 5.2 19 7.9 19 11V17L21 19M17 11C17 8.2 14.8 6 12 6S7 8.2 7 11V18H17V11Z" /></svg>
+      </button>
+      <button class="tab-btn" data-action='tabs#change' data-tabs-target='tab'>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>friends</title><path d="M13.07 10.41A5 5 0 0 0 13.07 4.59A3.39 3.39 0 0 1 15 4A3.5 3.5 0 0 1 15 11A3.39 3.39 0 0 1 13.07 10.41M5.5 7.5A3.5 3.5 0 1 1 9 11A3.5 3.5 0 0 1 5.5 7.5M7.5 7.5A1.5 1.5 0 1 0 9 6A1.5 1.5 0 0 0 7.5 7.5M16 17V19H2V17S2 13 9 13 16 17 16 17M14 17C13.86 16.22 12.67 15 9 15S4.07 16.31 4 17M15.95 13A5.32 5.32 0 0 1 18 17V19H22V17S22 13.37 15.94 13Z" /></svg>
+      </button>
+    </div>
+    <div class='avatar'>
+      <%=  image_tag User.first.gravatar_url(default: :mp), data: { action: 'click->tabs#toggle click@window->tabs#hide'} %>
+      <div class="avatar-content is-hidden" data-tabs-target='avatarContent'>
+        <%= link_to "Profile" %>
+        <%= link_to "Log out" %>
+      </div>  
+    </div>
+  </header>
+  <div class="tab-content" data-tabs-target='tabContent' data-action='load@window->tabs#log'>panel 1</div>
+  <div class="tab-content is-hidden" data-tabs-target='tabContent'>panel 2</div>
+  <div class="tab-content is-hidden" data-tabs-target='tabContent'>panel 3</div>
+</div>
